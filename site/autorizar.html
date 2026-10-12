@@ -1,18 +1,29 @@
 <!doctype html>
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Autorizar TikTok</title>
-<style>body{font-family:system-ui,sans-serif;max-width:560px;margin:40px auto;padding:0 16px;background:#fff7f4;color:#2b1d19}
-code{display:block;word-break:break-all;background:#fff;border:1px solid #e9b8a8;border-radius:10px;padding:14px;margin:14px 0}</style>
+<style>body{font-family:system-ui,sans-serif;max-width:560px;margin:40px auto;padding:0 16px;background:#fff7f4;color:#2b1d19;line-height:1.5}
+code{display:block;word-break:break-all;background:#fff;border:1px solid #e9b8a8;border-radius:10px;padding:14px;margin:14px 0}
+button,a.b{display:inline-block;background:#e2336b;color:#fff;border:0;border-radius:10px;padding:12px 18px;font-size:16px;text-decoration:none;cursor:pointer;margin:4px 0}</style>
 </head><body>
 <h1>Autorização do TikTok</h1>
 <p id="msg">Lendo o código...</p>
 <code id="codigo"></code>
+<div id="passos" hidden>
+  <button id="copiar">1. Copiar código</button><br>
+  <a class="b" href="https://github.com/nilton11junior-rgb/juliana-tiktok/actions/workflows/autorizar-tiktok.yml" target="_blank">2. Abrir o robô de autorização</a>
+  <p>Na página do GitHub: <b>Run workflow</b> → cole o código → <b>Run workflow</b>. Faça em até 5 minutos: o código vence rápido e só funciona uma vez.</p>
+</div>
 <script>
 const p = new URLSearchParams(location.search);
 const c = p.get("code");
 document.getElementById("msg").textContent = c
-  ? "Copie o código abaixo e rode: python3 src/autorizar_tiktok.py codigo <CÓDIGO>"
+  ? "Autorizado! Falta só entregar este código ao robô:"
   : "Nenhum código recebido. Erro: " + (p.get("error_description") || p.get("error") || "desconhecido");
 document.getElementById("codigo").textContent = c || "";
+if (c) {
+  document.getElementById("passos").hidden = false;
+  document.getElementById("copiar").onclick = () => navigator.clipboard.writeText(c).then(() => document.getElementById("copiar").textContent = "Copiado ✓");
+  history.replaceState(null, "", location.pathname);
+}
 </script>
 </body></html>

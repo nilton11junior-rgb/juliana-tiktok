@@ -6,7 +6,8 @@ notificação; a Juliana abre, escolhe um som em alta e posta. Esse modo não ex
 
 Variáveis de ambiente (segredos do GitHub):
   TIKTOK_CLIENT_KEY, TIKTOK_CLIENT_SECRET   do app em developers.tiktok.com
-  TIKTOK_REFRESH_TOKEN                     gerado uma vez com src/autorizar_tiktok.py (vale 365 dias)
+  TIKTOK_REFRESH_TOKEN                     gravado pelo workflow autorizar-tiktok (vale 365 dias)
+  GH_PAT                                   chave do GitHub (só este repositório, permissão Secrets) para renovar o token
   PUBLIC_BASE_URL                          URL pública de criativos/gerados (GitHub Pages, prefixo verificado no TikTok)
 
 Uso:
@@ -33,10 +34,25 @@ def access_token():
     }, headers={"Content-Type": "application/x-www-form-urlencoded"})
     d = r.json()
     if "access_token" not in d:
-        raise RuntimeError(f"token: {r.status_code} {d}")
-    if d.get("refresh_token") and d["refresh_token"] != os.environ["TIKTOK_REFRESH_TOKEN"]:
-        print("AVISO: o TikTok devolveu um refresh_token novo; atualize o segredo TIKTOK_REFRESH_TOKEN")
+        raise RuntimeError(f"token: {r.status_code} {d.get('error')} {d.get('error_description')}")
+    novo = d.get("refresh_token")
+    if novo and novo != os.environ["TIKTOK_REFRESH_TOKEN"]:
+        guardar_refresh_token(novo)
     return d["access_token"]
+
+
+def guardar_refresh_token(token):
+    """Grava o refresh token novo direto nos segredos do repositório (precisa do segredo GH_PAT).
+    O valor vai por stdin para o gh e nunca é impresso nem salvo em arquivo."""
+    if not os.environ.get("GH_PAT"):
+        print("AVISO: refresh token novo, mas sem GH_PAT para atualizar o segredo")
+        return
+    print(f"::add-mask::{token}")
+    subprocess.run(["gh", "secret", "set", "TIKTOK_REFRESH_TOKEN", "--repo", os.environ.get("GITHUB_REPOSITORY", "")],
+                   input=token.encode(), check=True, env={**os.environ, "GH_TOKEN": os.environ["GH_PAT"]},
+                   capture_output=True)
+    os.environ["TIKTOK_REFRESH_TOKEN"] = token
+    print("segredo TIKTOK_REFRESH_TOKEN atualizado")
 
 
 def api(token, path, body):

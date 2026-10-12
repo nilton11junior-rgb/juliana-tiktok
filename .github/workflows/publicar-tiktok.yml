@@ -31,6 +31,7 @@ jobs:
           TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
           TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
           TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
+          GH_PAT: ${{ secrets.GH_PAT }}
           PUBLIC_BASE_URL: https://nilton11junior-rgb.github.io/juliana-tiktok/criativos/gerados
         run: |
           for f in conteudo/calendario/*.json; do python3 src/publish.py "$f"; done

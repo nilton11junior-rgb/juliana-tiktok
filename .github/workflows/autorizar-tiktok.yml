@@ -1,0 +1,36 @@
+name: autorizar-tiktok
+# Rodar uma vez (e depois 1x por ano): Actions → autorizar-tiktok → Run workflow → colar o código
+# que apareceu na página de autorização. O código vale poucos minutos e só funciona uma vez.
+on:
+  workflow_dispatch:
+    inputs:
+      codigo:
+        description: "Código da página de autorização"
+        required: true
+jobs:
+  autorizar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trocar o código pelo token e gravar nos segredos
+        env:
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+          CODIGO: ${{ inputs.codigo }}
+          REDIRECT: https://nilton11junior-rgb.github.io/juliana-tiktok/site/autorizar.html
+        run: |
+          echo "::add-mask::$CODIGO"
+          RESP=$(curl -s -X POST https://open.tiktokapis.com/v2/oauth/token/ \
+            -H "Content-Type: application/x-www-form-urlencoded" \
+            --data-urlencode "client_key=$TIKTOK_CLIENT_KEY" \
+            --data-urlencode "client_secret=$TIKTOK_CLIENT_SECRET" \
+            --data-urlencode "code=$CODIGO" \
+            --data-urlencode "grant_type=authorization_code" \
+            --data-urlencode "redirect_uri=$REDIRECT")
+          RT=$(echo "$RESP" | jq -r '.refresh_token // empty')
+          if [ -z "$RT" ]; then
+            echo "falhou: $(echo "$RESP" | jq -c '{error, error_description}')"; exit 1
+          fi
+          echo "::add-mask::$RT"
+          printf '%s' "$RT" | gh secret set TIKTOK_REFRESH_TOKEN --repo "$GITHUB_REPOSITORY"
+          echo "ok: autorizado. Escopos: $(echo "$RESP" | jq -r '.scope'). Validade: $(( $(echo "$RESP" | jq -r '.refresh_expires_in') / 86400 )) dias"
