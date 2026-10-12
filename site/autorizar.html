@@ -6,6 +6,11 @@ code{display:block;word-break:break-all;background:#fff;border:1px solid #e9b8a8
 button,a.b{display:inline-block;background:#e2336b;color:#fff;border:0;border-radius:10px;padding:12px 18px;font-size:16px;text-decoration:none;cursor:pointer;margin:4px 0}</style>
 </head><body>
 <h1>Autorização do TikTok</h1>
+<div id="inicio" hidden>
+  <p>Cole a <b>Client key</b> do app (Developer Portal → Juliana Carrosseis → Sandbox "juliana" → Credentials) e toque em autorizar, na conta <b>@ferreira.bolos</b>.</p>
+  <input id="ck" placeholder="Client key" style="width:100%;padding:12px;border:1px solid #e9b8a8;border-radius:10px;font-size:16px;box-sizing:border-box">
+  <p><button id="ir">Autorizar no TikTok</button></p>
+</div>
 <p id="msg">Lendo o código...</p>
 <code id="codigo"></code>
 <div id="passos" hidden>
@@ -16,9 +21,19 @@ button,a.b{display:inline-block;background:#e2336b;color:#fff;border:0;border-ra
 <script>
 const p = new URLSearchParams(location.search);
 const c = p.get("code");
+if (!c && !p.get("error")) {
+  document.getElementById("inicio").hidden = false;
+  document.getElementById("ir").onclick = () => {
+    const ck = document.getElementById("ck").value.trim();
+    if (!ck) return;
+    const q = new URLSearchParams({client_key: ck, scope: "user.info.basic,video.upload", response_type: "code",
+      redirect_uri: location.origin + location.pathname, state: "juliana"});
+    location.href = "https://www.tiktok.com/v2/auth/authorize/?" + q;
+  };
+}
 document.getElementById("msg").textContent = c
   ? "Autorizado! Falta só entregar este código ao robô:"
-  : "Nenhum código recebido. Erro: " + (p.get("error_description") || p.get("error") || "desconhecido");
+  : p.get("error") ? "Não autorizou. Erro: " + (p.get("error_description") || p.get("error")) : "";
 document.getElementById("codigo").textContent = c || "";
 if (c) {
   document.getElementById("passos").hidden = false;
