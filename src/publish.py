@@ -114,6 +114,9 @@ def main():
         if not post.get("aprovado", False):
             print(f"sem aprovação do Nilton, não envia: {post['id']}")
             continue
+        if post.get("agendado_no_studio"):
+            print(f"já agendado no TikTok Studio, robô não envia: {post['id']}")
+            continue
         if datetime.fromisoformat(post["publicar_em"]) > now and not ignore_time:
             print(f"aguardando {post['id']} ({post['publicar_em']})")
             continue

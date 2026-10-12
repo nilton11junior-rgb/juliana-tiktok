@@ -13,7 +13,7 @@ agora = datetime.now(timezone.utc)
 menor = None
 for f in sorted((ROOT / "conteudo" / "calendario").glob("*.json")):
     for p in json.loads(f.read_text(encoding="utf-8"))["posts"]:
-        if p["id"] in estado or not p.get("aprovado", False):
+        if p["id"] in estado or not p.get("aprovado", False) or p.get("agendado_no_studio"):
             continue
         falta = (datetime.fromisoformat(p["publicar_em"]) - agora).total_seconds()
         if falta <= 0:
