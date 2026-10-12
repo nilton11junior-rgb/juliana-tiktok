@@ -1,0 +1,42 @@
+name: publicar-tiktok
+on:
+  schedule:
+    - cron: "*/15 * * * *"        # confere se há carrossel vencido (o GitHub pode atrasar)
+    - cron: "7 13,20 * * *"       # reforço 10h07 e 17h07 BRT: acorda antes dos horários e espera
+  push:
+    paths:
+      - "conteudo/calendario/**"  # ao aprovar, o robô acorda na hora e espera o horário exato
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: publicar
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install requests
+      - name: Aguardar o horário do próximo carrossel (até 5h30)
+        run: |
+          S=$(python3 src/espera.py 2>/dev/null || echo 0)
+          echo "esperando $S segundos"
+          if [ "$S" -gt 0 ]; then sleep "$S"; fi
+      - name: Enviar carrosséis vencidos ao TikTok
+        env:
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
+          PUBLIC_BASE_URL: ${{ vars.PUBLIC_BASE_URL }}
+        run: |
+          for f in conteudo/calendario/*.json; do python3 src/publish.py "$f"; done
+      - name: Salvar estado
+        if: always()
+        run: |
+          git config user.name "juliana-bot"; git config user.email "bot@users.noreply.github.com"
+          git add estado/published.json 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m "estado: carrosséis enviados" && git pull --rebase && git push)

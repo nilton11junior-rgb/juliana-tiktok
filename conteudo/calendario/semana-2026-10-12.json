@@ -1,0 +1,49 @@
+{
+  "semana": "2026-10-12",
+  "estilo_imagem": "Foto vertical 9:16, realista, como se tirada com celular bom numa cozinha de confeitaria caseira brasileira. Bancada de inox, luz natural suave de janela, cores vivas e apetitosas, foco nítido, leve profundidade de campo. Sem texto, sem letras, sem logos, sem pessoas de rosto. Deixe o terço de cima da imagem mais limpo (fundo desfocado) para colocar texto depois.",
+  "posts": [
+    {
+      "id": "ter13-erros-preco",
+      "publicar_em": "2026-10-13T11:45:00-03:00",
+      "segmento": "dicas/erros",
+      "titulo": "4 erros que me faziam vender bolo de pote a R$8",
+      "legenda": "Eu vendia muito e não sobrava nada. O problema estava no preço, não na receita.\n\nQual desses erros você ainda comete? Me conta aqui 👇\n\n#bolodepote #confeitaria #precificacao #rendaextra #docesparavender",
+      "imagem_prompts": {
+        "capa.jpg": "Close de uma mão com luva transparente segurando um bolo de pote de chocolate com morangos e creme branco, outros potes iguais desfocados atrás na bancada de inox.",
+        "custo.jpg": "Ingredientes de bolo de pote organizados na bancada de inox: leite condensado, chocolate em pó, creme de leite, morangos, potes vazios transparentes empilhados, vista de cima levemente inclinada.",
+        "embalagem.jpg": "Potes transparentes vazios com tampa, colherzinhas, etiquetas redondas em branco e um rolo de fita rosa sobre a bancada de inox.",
+        "prova.jpg": "Várias fileiras de bolos de pote prontos com morango e chocolate sobre a bancada de inox, vista em perspectiva, sensação de fartura."
+      },
+      "slides": [
+        {"tipo": "capa", "imagem": "capa.jpg", "titulo": "4 erros que me faziam vender bolo de pote a *R$8*", "destaque": "(e eu achava que tava lucrando)"},
+        {"tipo": "item", "imagem": "custo.jpg", "num": "1", "titulo": "Calcular o custo pela receita inteira", "texto": "Exemplo: receita de R$45 que rende 15 potes = *R$3 por pote*. Sem esse número, o preço vira chute."},
+        {"tipo": "item", "imagem": "custo.jpg", "num": "2", "titulo": "Não cobrar o meu tempo", "texto": "2 horas na cozinha valem dinheiro. Se não entra no preço, você trabalha de graça."},
+        {"tipo": "item", "imagem": "embalagem.jpg", "num": "3", "titulo": "Esquecer pote, gás e entrega", "texto": "Pote, colher, etiqueta, gás e motoboy. Se não somar, sai *do seu lucro*."},
+        {"tipo": "item", "imagem": "prova.jpg", "num": "4", "titulo": "Vender só pra quem aparece", "texto": "Uma cliente que pede toda semana vale mais que 10 vendas soltas."},
+        {"tipo": "prova", "imagem": "prova.jpg", "titulo": "Corrigindo isso, meu pote foi de R$8 pra *R$15*", "texto": "E as clientes continuaram comprando. Salva pra não esquecer 📌"}
+      ],
+      "aprovado": false
+    },
+    {
+      "id": "ter13-mesmo-bolo-10x",
+      "publicar_em": "2026-10-13T19:15:00-03:00",
+      "segmento": "mudanças que fazem vender",
+      "titulo": "O mesmo bolo de pote pode vender 10x mais",
+      "legenda": "Não precisei mudar a receita. Mudei o jeito de mostrar e de oferecer.\n\nQual dessas você vai testar primeiro? 👇\n\n#bolodepote #confeitariacaseira #vendasdedoces #empreendedorismofeminino #rendaextra",
+      "imagem_prompts": {
+        "capa.jpg": "Um único bolo de pote em destaque, camadas de massa de chocolate, creme branco e morangos visíveis pelo pote transparente, sobre a bancada de inox, fundo desfocado.",
+        "foto.jpg": "Bolo de pote de ninho com morango sobre a bancada, iluminado por luz natural de janela vindo da lateral, fundo limpo e claro.",
+        "cardapio.jpg": "Quatro sabores diferentes de bolo de pote lado a lado em fila na bancada de inox: chocolate com morango, ninho, uva com creme, maracujá.",
+        "prova.jpg": "Geladeira expositora aberta com várias prateleiras cheias de bolos de pote e copos de sobremesa, potes transparentes com tampa, aparência profissional e farta."
+      },
+      "slides": [
+        {"tipo": "capa", "imagem": "capa.jpg", "titulo": "O mesmo bolo de pote pode vender *10x mais*", "destaque": "sem mudar a receita 👇"},
+        {"tipo": "item", "imagem": "foto.jpg", "num": "1", "titulo": "Foto na luz da janela", "texto": "Doce lindo em foto escura não vende. Luz natural, fundo limpo e o pote *de frente*."},
+        {"tipo": "item", "imagem": "cardapio.jpg", "num": "2", "titulo": "Cardápio curto", "texto": "Com 15 opções, a cliente pensa. Com *4 sabores campeões*, ela escolhe."},
+        {"tipo": "item", "imagem": "cardapio.jpg", "num": "3", "titulo": "Cardápio no mesmo dia da semana", "texto": "Manda no status e na lista sempre no mesmo dia. A cliente cria o hábito de pedir."},
+        {"tipo": "prova", "imagem": "prova.jpg", "titulo": "Foi assim que saí de 5 pra *50 bolos por mês*", "texto": "Mesma receita. Outro jeito de vender."}
+      ],
+      "aprovado": false
+    }
+  ]
+}
