@@ -104,6 +104,9 @@ def main():
     now = datetime.now(timezone.utc)
     base = os.environ.get("PUBLIC_BASE_URL", "").rstrip("/")
     data = json.loads(Path(args[0]).read_text(encoding="utf-8"))
+    if not dry and not os.environ.get("TIKTOK_CLIENT_KEY"):
+        print("app do TikTok ainda não configurado (sem TIKTOK_CLIENT_KEY): nada enviado")
+        return
     falhas = []
     for post in data["posts"]:
         if post["id"] in state:

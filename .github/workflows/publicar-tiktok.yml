@@ -31,7 +31,7 @@ jobs:
           TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
           TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
           TIKTOK_REFRESH_TOKEN: ${{ secrets.TIKTOK_REFRESH_TOKEN }}
-          PUBLIC_BASE_URL: ${{ vars.PUBLIC_BASE_URL }}
+          PUBLIC_BASE_URL: https://nilton11junior-rgb.github.io/juliana-tiktok/criativos/gerados
         run: |
           for f in conteudo/calendario/*.json; do python3 src/publish.py "$f"; done
       - name: Salvar estado
