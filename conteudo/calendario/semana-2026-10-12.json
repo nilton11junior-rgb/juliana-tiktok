@@ -108,6 +108,115 @@
       ],
       "aprovado": true,
       "agendado_no_studio": true
+    },
+    {
+      "id": "qua14-matematica-pote",
+      "publicar_em": "2026-10-14T11:45:00-03:00",
+      "segmento": "matemática do pote",
+      "titulo": "Quanto sobra de verdade num bolo de pote de R$15",
+      "legenda": "Fiz a conta do pote na ponta do lápis. Os valores são de exemplo: troque pelos seus e veja quanto sobra.\n\nSalva pra fazer a sua conta depois 📌\n\n#bolodepote #precificacao #confeitaria #docesparavender #rendaextra",
+      "imagem_prompts": {
+        "capa.jpg": "Um bolo de pote de chocolate com morango em destaque sobre a bancada de inox, ao lado uma calculadora simples e um caderninho fechado, fundo de cozinha desfocado.",
+        "ingredientes.jpg": "Tigelas com massa de chocolate, creme branco e morangos picados sobre a bancada de inox, colher de silicone, vista de cima levemente inclinada.",
+        "embalagem.jpg": "Pilha de potes transparentes com tampa, colherzinhas e etiquetas redondas rosa sobre a bancada de inox.",
+        "conta.jpg": "Mão com luva transparente fechando a tampa de um bolo de pote, vários potes prontos alinhados atrás, bancada de inox."
+      },
+      "slides": [
+        {
+          "tipo": "capa",
+          "imagem": "capa.jpg",
+          "titulo": "Quanto sobra de *verdade* num pote de R$15?",
+          "destaque": "fiz a conta na ponta do lápis 👇"
+        },
+        {
+          "tipo": "item",
+          "imagem": "ingredientes.jpg",
+          "num": "1",
+          "titulo": "Ingredientes",
+          "texto": "Exemplo: receita de R$45 que rende 15 potes = *R$3 por pote*."
+        },
+        {
+          "tipo": "item",
+          "imagem": "embalagem.jpg",
+          "num": "2",
+          "titulo": "Pote, colher e etiqueta",
+          "texto": "No exemplo, mais *R$1,50* por pote. Parece pouco, mas soma rápido."
+        },
+        {
+          "tipo": "item",
+          "imagem": "embalagem.jpg",
+          "num": "3",
+          "titulo": "Gás, luz e entrega",
+          "texto": "Separe *R$1 por pote* pra isso não sair do seu bolso."
+        },
+        {
+          "tipo": "lista",
+          "imagem": "conta.jpg",
+          "titulo": "A conta fechada",
+          "marca": "✅",
+          "linhas": [
+            "Custo: R$5,50",
+            "Preço: R$15",
+            "Sobra: *R$9,50 por pote*"
+          ]
+        },
+        {
+          "tipo": "prova",
+          "imagem": "conta.jpg",
+          "titulo": "Quando eu cobrava *R$8*…",
+          "texto": "Com essa mesma conta, sobravam só R$2,50. Salva e faz a sua 📌"
+        }
+      ],
+      "aprovado": false
+    },
+    {
+      "id": "qua14-mitos-comecar",
+      "publicar_em": "2026-10-14T19:15:00-03:00",
+      "segmento": "mito x verdade",
+      "titulo": "Você não precisa de R$1.000 pra começar a vender doce",
+      "legenda": "Eu comecei pequeno, com o que tinha em casa. Esses 3 mitos quase me fizeram desistir antes de começar.\n\nQual deles te trava? Conta aqui 👇\n\n#confeitariacaseira #bolodepote #comecaradevender #rendaextra #empreendedorismofeminino",
+      "imagem_prompts": {
+        "capa.jpg": "Cozinha caseira simples e limpa com bancada de inox, uma panela, um fouet e três bolos de pote prontos, luz de janela, sensação de começo humilde mas caprichado.",
+        "utensilios.jpg": "Fouet, panela pequena, espátula de silicone e uma tigela de vidro sobre a bancada de inox, luz natural.",
+        "sabores.jpg": "Três bolos de pote de sabores diferentes lado a lado (chocolate com morango, ninho, maracujá) na bancada de inox, fundo desfocado.",
+        "entrega.jpg": "Sacola de papel kraft com dois bolos de pote dentro e uma etiqueta rosa em branco, sobre a bancada de inox."
+      },
+      "slides": [
+        {
+          "tipo": "capa",
+          "imagem": "capa.jpg",
+          "titulo": "Você *não* precisa de R$1.000 pra começar a vender doce",
+          "destaque": "3 mitos que travam quem quer começar"
+        },
+        {
+          "tipo": "item",
+          "imagem": "utensilios.jpg",
+          "num": "1",
+          "titulo": "Mito: precisa de batedeira profissional",
+          "texto": "Verdade: dá pra começar com *panela, fouet* e a geladeira de casa."
+        },
+        {
+          "tipo": "item",
+          "imagem": "sabores.jpg",
+          "num": "2",
+          "titulo": "Mito: precisa de cardápio grande",
+          "texto": "Verdade: *2 ou 3 sabores* bem feitos vendem mais que 15 opções."
+        },
+        {
+          "tipo": "item",
+          "imagem": "entrega.jpg",
+          "num": "3",
+          "titulo": "Mito: precisa de loja",
+          "texto": "Verdade: status do WhatsApp e entrega no bairro já fazem o *primeiro dinheiro* girar."
+        },
+        {
+          "tipo": "prova",
+          "imagem": "capa.jpg",
+          "titulo": "Eu comecei vendendo *5 bolos por mês*",
+          "texto": "Hoje são 50. Começar pequeno não é problema."
+        }
+      ],
+      "aprovado": false
     }
   ]
 }
