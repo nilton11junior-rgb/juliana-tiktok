@@ -38,7 +38,7 @@ Idioma: **português do Brasil**. Quem aprova: **Nilton**. Sem `"aprovado": true
 ## Visual (render.py)
 - Fundo: foto gerada no ChatGPT, vertical 9:16, estilo foto de celular realista: bancada de inox, potes transparentes, morango, uva, chocolate, creme, luz natural. **Terço de cima mais limpo** para o texto.
 - Texto: caixa branca com letra preta em negrito; destaque rosa `#e2336b`. `*palavra*` vira rosa.
-- Área segura do TikTok: texto entre y=250 e y=1450; nada embaixo à direita (botões).
+- Área segura do TikTok: o TikTok corta fotos 9:16 para 3:4 (sobra y=240 a 1680). Texto começa em y=430 e termina antes de y=1500; oferta inteira na faixa central. Nada embaixo à direita (botões).
 
 ## Tipos de slide no JSON
 | tipo | campos |

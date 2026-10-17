@@ -34,7 +34,7 @@ body{width:1080px;height:1920px;position:relative;overflow:hidden;font-family:'P
  background:linear-gradient(160deg,#f6d9cf,#e9b8a8)}
 .bg{position:absolute;inset:0;background-size:cover;background-position:center}
 .shade{position:absolute;left:0;right:0;top:0;height:900px;background:linear-gradient(rgba(0,0,0,.28),rgba(0,0,0,0))}
-.zona{position:absolute;left:90px;right:110px;top:250px;display:flex;flex-direction:column;align-items:center;gap:22px}
+.zona{position:absolute;left:90px;right:120px;top:430px;display:flex;flex-direction:column;align-items:center;gap:22px}
 .caixa{background:#fff;border-radius:26px;padding:30px 40px;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,.18)}
 .capa .caixa{font-size:66px;line-height:1.16;font-weight:700}
 .rosa{background:#e2336b;color:#fff;font-size:44px;line-height:1.22;font-weight:700;border-radius:22px;padding:20px 34px;text-align:center}
@@ -50,7 +50,7 @@ h2{font-size:60px;line-height:1.14;font-weight:700}
 .linha b{font-weight:700;flex:none}
 .prova .caixa{text-align:center}
 .grande{font-size:84px;line-height:1.08;font-weight:700}
-.arraste{position:absolute;left:0;right:0;bottom:430px;text-align:center}
+.arraste{position:absolute;left:0;right:0;bottom:420px;text-align:center}
 .arraste span{background:rgba(255,255,255,.92);border-radius:40px;padding:14px 34px;font-size:30px;font-weight:700;letter-spacing:.06em}
 """
 
@@ -97,10 +97,12 @@ def slide_html(s, post_id, primeiro):
 
 def oferta(destino):
     """Arte da oferta em 9:16: imagem inteira no centro, sobre ela mesma desfocada."""
+    # a arte inteira fica dentro da faixa central 3:4 (o TikTok corta topo e rodapé de fotos 9:16)
     arte = Image.open(OFERTA).convert("RGB")
-    fundo = arte.resize((W, int(arte.height * W / arte.width))).resize((W, H)).filter(ImageFilter.GaussianBlur(40))
-    frente = arte.resize((W, int(arte.height * W / arte.width)), Image.LANCZOS)
-    fundo.paste(frente, (0, (H - frente.height) // 2))
+    fundo = arte.resize((W, H)).filter(ImageFilter.GaussianBlur(40))
+    alt = 1380
+    frente = arte.resize((int(arte.width * alt / arte.height), alt), Image.LANCZOS)
+    fundo.paste(frente, ((W - frente.width) // 2, (H - alt) // 2))
     fundo.save(destino)
 
 
