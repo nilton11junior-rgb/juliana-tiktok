@@ -167,7 +167,8 @@
           "texto": "Com essa mesma conta, sobravam só R$2,50. Salva e faz a sua 📌"
         }
       ],
-      "aprovado": false
+      "aprovado": true,
+      "agendado_no_studio": true
     },
     {
       "id": "qui15-mitos-comecar",
@@ -216,7 +217,8 @@
           "texto": "Hoje são 50. Começar pequeno não é problema."
         }
       ],
-      "aprovado": false
+      "aprovado": true,
+      "agendado_no_studio": true
     }
   ]
 }
